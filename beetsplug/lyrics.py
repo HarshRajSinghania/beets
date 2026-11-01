@@ -298,7 +298,7 @@ class LRCLyrics:
     ) -> str | None:
         """Accept synced lyrics only when the final timestamp fits duration."""
         if lyrics and (
-            m := Lyrics.LINE_PARTS_PAT.match(lyrics.splitlines()[-1])
+            m := Lyrics.LINE_PARTS_PAT.match(lyrics.rstrip().splitlines()[-1])
         ):
             ts, _ = m.groups()
             if ts:
