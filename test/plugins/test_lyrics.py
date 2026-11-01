@@ -723,6 +723,18 @@ class TestLRCLibLyrics(LyricsBackendTest):
                 id="ignore synced with a timestamp longer than duration",
             ),
             pytest.param(
+                [
+                    lyrics_match(
+                        syncedLyrics="[00:00.00] synced
+
+"
+                    )
+                ],
+                "[00:00.00] synced
+",
+                id="accept synced lyrics ending with blank line",
+            ),
+            pytest.param(
                 [lyrics_match(syncedLyrics=None), lyrics_match()],
                 SYNCED,
                 id="prefer match with synced lyrics",
